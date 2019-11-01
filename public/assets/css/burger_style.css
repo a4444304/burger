@@ -1,0 +1,25 @@
+body {
+    font: 18px arial, sans-serif;
+    background-image: url("/public/assets/images/burger.jpg"), no-repeat;
+    justify-content: center;
+    background-color: #fbc259, cover;
+    
+    
+}
+/*Button*/
+.container {
+    background:  #659A98;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-size: 18px;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px #bbb;
+    width: 85vw;
+}
+
+#top-bar{
+    display: flex;
+    justify-content: center;
+}
