@@ -1,12 +1,13 @@
 body {
-    font: 18px arial, sans-serif;
+    font: 18px; 
+    font-family: 'Coiny', cursive;
     background-image: url("/public/assets/images/burger.jpg"), no-repeat;
     justify-content: center;
     background-color: #fbc259, cover;
     
     
 }
-/*Button*/
+/* Button */
 .container {
     background:  #659A98;
     border: 0;
@@ -19,7 +20,7 @@ body {
     width: 85vw;
 }
 
-#top-bar{
+/* #top-bar{
     display: flex;
     justify-content: center;
-}
+} */
