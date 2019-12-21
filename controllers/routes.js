@@ -4,23 +4,51 @@ var burger = require("../models/burger.js");
 
 // creating the base route which will render index
 router.get("/", function(req, res){
-    burger.all(function(burger_data){
-        console.log(burger_data);
-        res.render("index",{burger_data});
-    })   
-})
-
-router.put("/burgers/update",function(req, res){
-    burger.update(req.body.burger_id, function(result){
-        console.log(result);
-        res.redirect("/");
+    burger.selectAll(function(burger_data){
+        var handlebarsObject = {
+            burgers: burger_data
+        };
+        console.log(handlebarsObject);
+        res.render("index",handlebarsObject);
     });
+    
+    router.post("/api/burgers", function(req, res){
+        burger.insertOne(
+            ["burger_name", "devoured"],
+            [req.body.burger_name, req.body.devoured],
+            function(result){
+            // then send back the ID of new burger
+            res.json({ id: result.insertId });
+        }
+    );
 });
 
-router.post("/burgers/create", function(req, res){
-    burger.create(req.body.burger_name, function(result){
-        res.redirect("/");
-    })
-})
+router.put("/api/burgers/:id",function(req, res){
+    var condition = "id " + req.params.id;
+
+    console.log("condition", condition);
+    burger.updateOne({ devoured: req.body.devoured },condition, function(
+        result
+    ) {
+        if((result, changedRows === 0)) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
+router.deleteOne(condition, function(req, res){
+    var condition = "id = " + req.params.id;
+    console.log("condition", condition);
+
+    burger.deleteOne(condition, function(result){
+        if((result, changedRows === 0)) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
+});
 // we are having a file call another file and so on
 module.exports = router;

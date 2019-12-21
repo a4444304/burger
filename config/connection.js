@@ -4,10 +4,12 @@ var connection = mysql.createConnection({
     user:"root",
     password:"mysql10",
     database:"burgers_db"
-})
+});
 connection.connect(function(err){
     if(err)throw err;
-    console.log("connected as id: " + connection.threadid);
+    console.error("error connecting: " + err.stack);
+    return;
+    console.log("connected as id: " + connection.threadId);
 });
 // we have a basic mysql connection here and then 
 // we will export it to our orm
