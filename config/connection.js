@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
 })
 connection.connect(function(err){
     if(err)throw err;
-    console.log("connected as id: " + connection.threadid);
+    console.log("connected as id: " + connection.threadId);
 });
 // we have a basic mysql connection here and then 
 // we will export it to our orm
